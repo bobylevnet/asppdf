@@ -1,5 +1,5 @@
-export interface ItemInterface {
-    id: number
-    namec: string
-    selected: boolean
+import { IbitemsInterface } from "./Ibitems.interface";
+
+export interface ItemInterface extends  IbitemsInterface {
+    
 }

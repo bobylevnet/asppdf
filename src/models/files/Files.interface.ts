@@ -1,5 +1,6 @@
-export interface ItemInterface {
+export interface FilesInterface {
     id: number
-    namec: string
-    selected: boolean
+    name: string
+    pathfile: boolean
+    datecreate: Date
 }

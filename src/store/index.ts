@@ -32,13 +32,16 @@ export default createStore({
     },
 
     actions: {
+
         loadItems({ commit, state }) {
             commit('loadingItems')
+
         // Фиктивные данные.
         setTimeout(()=> apiClient.items.fetchItems().then((data: ItemInterface[]) => {
                 commit('loadedItems', data)
         }), 1000)
         },
+
         selectItem({ commit }, params: {
             id: number
             selected: boolean

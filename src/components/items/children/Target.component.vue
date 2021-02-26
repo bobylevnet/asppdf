@@ -9,11 +9,11 @@
 </template>
 <script lang="ts">
 import { defineComponent, computed, PropType } from "vue";
-import { ItemInterface } from "@/models/items/Item.interface";
+import { TargetInterface } from "@/models/items/Target.interface";
 export default defineComponent({
   props: {
     model: {
-      type: Object as PropType<ItemInterface>,
+      type: Object as PropType<TargetInterface>,
     },
   },
   emits: ["select"],

@@ -1,4 +1,5 @@
 import { ItemsApiClientInterface } from './items'
+import { UploadApiClientInterface } from './upload';
 
 /**
 * @Name ApiClientInterface
@@ -7,5 +8,6 @@ import { ItemsApiClientInterface } from './items'
 ганизации кода.
 */
 export interface ApiClientInterface {
-    items: ItemsApiClientInterface
+    items: ItemsApiClientInterface,
+    upload: UploadApiClientInterface
 }

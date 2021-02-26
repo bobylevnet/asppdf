@@ -1,8 +1,10 @@
 <template>
+  
+  
+  
   <div
     class="loader"
-    v-show="show"
-  >
+    v-show="show" >
     <div class="bounceball"></div>
   </div>
 </template>

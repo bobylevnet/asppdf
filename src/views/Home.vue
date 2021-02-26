@@ -6,37 +6,39 @@
       @selectItem="onSelectItem"
     />
 
-    <UploadFiles  @chooseFiles:="onChooseFiles" />
+   
+    <UploadFiles  :loading="loadingupd" @chooseFile="onChooseFiles" />
   </div>
 </template>
 <script lang="ts">
 import { defineComponent, computed, onMounted } from "vue";
 import store  from "@/store"
+import stupload from "@/stupload"
 import ItemsListComponent from "@/components/items/ItemsList.component.vue";
 import { ItemInterface } from "@/models/items/Item.interface";
-//import UploadFiles from '@/components/files/UploadFiles.component.vue'
+import UploadFiles from "@/components/upload/Upload.component.vue";
+import { UploadInterface } from "@/models/upload/Upload.interface";
 
 
 export default defineComponent({
   name: "Home",
   components: {
     ItemsListComponent,
-   // UploadFiles,
+    UploadFiles,
   },
   setup() {
 
    // const filesStore= useFilesStore();
 
 
+   const onChooseFiles = (upload: UploadInterface) => {
+   
+   console.log("choose", upload)
 
-      /*Выбор файлов */
-   /* const onChooseFiles = (files: FilesInterface) =>  {
-        filesStore.action(MutationType.files.chooseFile , {
-          files: files.files
-        });
-    };*/
-
-   // const itemsStore = useItemsStore();
+      stupload.dispatch('uploadFiles', {
+            files: upload
+      });
+    };
 
     const onSelectItem = (item: ItemInterface) => {
       store.dispatch('selectItem', {
@@ -59,13 +61,17 @@ export default defineComponent({
       return store.state.loading;
     });
  
-
+  const loadingupd = computed(() => {
+      return stupload.state.loading;
+    });
 
 
     return {
       items,
       loading,
+      loadingupd,
       onSelectItem,
+      onChooseFiles,
     };
   },
 });

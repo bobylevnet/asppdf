@@ -4,7 +4,6 @@
 
   <Loader v-show="loading" />
    
-  
   <div>
     <div v-show="!loading">
             <div class="">
@@ -13,6 +12,8 @@
     </div>    
   </div>
 </template>
+
+
 
 <script lang="ts">
 
@@ -36,7 +37,8 @@ export default defineComponent({
 
 
       const upload: UploadInterface = {
-        formdata: new FormData
+        formdata: new FormData,
+        files: []
       }  
 
      const   uploadFile = (event: any)=>  {

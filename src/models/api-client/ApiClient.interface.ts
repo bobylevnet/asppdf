@@ -1,5 +1,6 @@
 import { ItemsApiClientInterface } from './items'
 import { UploadApiClientInterface } from './upload';
+import { BaseApiClientInterface } from './base'
 
 /**
 * @Name ApiClientInterface
@@ -9,5 +10,7 @@ import { UploadApiClientInterface } from './upload';
 */
 export interface ApiClientInterface {
     items: ItemsApiClientInterface,
-    upload: UploadApiClientInterface
+    upload: UploadApiClientInterface,
+    target: ItemsApiClientInterface,
+    base: BaseApiClientInterface
 }

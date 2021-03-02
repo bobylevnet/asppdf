@@ -4,10 +4,10 @@ import {
     ItemsApiClientModel
 } from '@/models/api-client/items'
 const urls: ItemsApiClientUrlsInterface = {
-    fetchItems: `http://localhost:8080/route?rest={"model": "items", "action": "findall"}
-    &datajs={"id" : "", "namec":"","selected":""}`
+    fetchItems: `http://localhost:8080/route?rest={"model": "target", "action": "findall"}
+    &datajs={}`
 }
 // Создаём экземпляр ItemsApiClient с url, который возвращает данные
-const itemsApiClient: ItemsApiClientInterface = new ItemsApiClientModel(urls)
+const targertApiClient: ItemsApiClientInterface = new ItemsApiClientModel(urls)
 // Экспортируем объект.
-export default itemsApiClient
+export default targertApiClient

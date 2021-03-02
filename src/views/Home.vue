@@ -1,23 +1,42 @@
 <template>
   <div class="home">
-    <ItemsListComponent
+    <ItemsListComponent 
       :items="items"
       :loading="loading"
       @selectItem="onSelectItem"
     />
 
-   
-    <UploadFiles  :loading="loadingupd" @chooseFile="onChooseFiles" />
+    <FindComponent  @find="onFilterTarget"/>
+
+      <TargetListComponent
+      :targets="target"
+      :loading="loading"
+      @selectTarget="onSelectTarget"
+    />
+
+     <UploadFiles  :loading="loadingupd" @chooseFile="onChooseFiles" />
+
+      <FilesListComponent  :files="files"/>
+
   </div>
 </template>
 <script lang="ts">
 import { defineComponent, computed, onMounted } from "vue";
 import store  from "@/store"
 import stupload from "@/stupload"
+import sttarget from "@/sttarget"
+import stfiles from "@/stfiles"
 import ItemsListComponent from "@/components/items/ItemsList.component.vue";
+import TargetListComponent from "@/components/items/TargetList.component.vue";
+import FilesListComponent from "@/components/items/FilesList.component.vue"
 import { ItemInterface } from "@/models/items/Item.interface";
 import UploadFiles from "@/components/upload/Upload.component.vue";
 import { UploadInterface } from "@/models/upload/Upload.interface";
+import { TargetInterface } from "@/models/items/Target.interface";
+import FindComponent  from "@/components/items/Find.component.vue"
+ import { debounce } from "throttle-debounce"; 
+import { FilesInterface } from "@/models/items/Files.interface";
+
 
 
 export default defineComponent({
@@ -25,10 +44,34 @@ export default defineComponent({
   components: {
     ItemsListComponent,
     UploadFiles,
+    TargetListComponent,
+    FindComponent,
+    FilesListComponent
   },
   setup() {
 
-   // const filesStore= useFilesStore();
+
+
+
+    //дулаение загруженных файлов 
+    const onDeleteFiles = (file: FilesInterface) => {
+         // stfiles.state.
+    }
+
+
+    const onFilterTarget = debounce(500, (txt: string) => {
+    //if (txt) {
+
+        sttarget.state.filter = txt
+        sttarget.dispatch('loadItems', {
+          filter: txt
+        });
+     // }  else {
+
+    // }
+    });
+
+
 
 
    const onChooseFiles = (upload: UploadInterface) => {
@@ -39,6 +82,14 @@ export default defineComponent({
             files: upload
       });
     };
+
+    const onSelectTarget = (target: TargetInterface) => {
+      sttarget.dispatch('selectTarget', {
+        id: target.id,
+        selected: !target.selected,
+      });
+    };
+
 
     const onSelectItem = (item: ItemInterface) => {
       store.dispatch('selectItem', {
@@ -51,27 +102,34 @@ export default defineComponent({
       return store.state.items;
     });
 
-
+    const target = computed(() => {
+      return sttarget.state.target;
+    });
+    
+   
     onMounted(() => {
       store.dispatch('loadItems');
+      sttarget.dispatch('loadItems');
     });
-
 
     const loading = computed(() => {
       return store.state.loading;
     });
  
-  const loadingupd = computed(() => {
+    const loadingupd = computed(() => {
       return stupload.state.loading;
     });
 
 
     return {
       items,
+      target,
       loading,
       loadingupd,
       onSelectItem,
       onChooseFiles,
+      onSelectTarget,
+      onFilterTarget,
     };
   },
 });

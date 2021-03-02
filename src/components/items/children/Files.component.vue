@@ -1,38 +1,30 @@
 <template>
-  <li
-    :class="cssClass"
-    @click="onClick"
-  >
+  <li    :class="cssClass"  >
     <div class="selected-indicator">￿</div>
     <div class="name">{{ model.target_name }}</div>
+    <input type="button"> Удалить</button>
   </li>
 </template>
 <script lang="ts">
 import { defineComponent, computed, PropType } from "vue";
 import { TargetInterface } from "@/models/items/Target.interface";
+import { FilesInterface } from "@/models/files/Files.interface";
 export default defineComponent({
   props: {
     model: {
-      type: Object as PropType<TargetInterface>,
+      type: Object as PropType<FilesInterface>,
     },
   },
-  emits: ["select"],
+  emits: ["delete"],
 
   setup(props, { emit }) {
-    const cssClass = computed(() => {
-      let css = "item";
-      if (props.model?.selected) {
-        css += " selected";
-      }
-      return css.trim();
-    });
+
     const onClick = () => {
-    console.log("select", props.model);
-    
-     emit("select", props.model);
+    console.log("delete", props.model);
+
+     emit("delete", props.model);
     };
     return {
-      cssClass,
        onClick,
     };
   },

@@ -1,12 +1,12 @@
 <template>
 <div>
 <h3>Items - loading: {{ loading }}:</h3>
-    <ul>
-      <ItemComponent
-        v-for="item in items"
-        :key="item.id"
-        :model="item"
-        @select="onItemSelect"
+    <ul id="navi">
+      <TargetComponent
+        v-for="target in targets"
+        :key="target.id"
+        :model="target"
+        @select="onTargetSelect"
       />
     </ul>
   </div>
@@ -14,44 +14,54 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
 import { TargetInterface } from "@/models/items/Target.interface";
-import ItemComponent from "./children/Item.component.vue";
+import TargetComponent from "./children/Target.component.vue";
 import Loader from '@/components/shared/Loader.component.vue'
 
 export default defineComponent({
   components: {
-    ItemComponent
+    TargetComponent
   },
   props: {
-    items: {
+    targets: {
       type: Array as PropType<TargetInterface[]>,
     },
     loading: {
         type: Boolean
-    }
+    }, 
+    filter: {
+      type: String
+    },
   },
-emits: ['selectItem'],
+emits: ['selectTarget'],
   setup(props, {emit}) {
 
-    const onItemSelect = (item: TargetInterface) => {
+    const onTargetSelect = (item: TargetInterface) => {
      // item.selected = !item.selected;
      // console.log("onItemSelect", item.id, item.selected);
-      emit('selectItem', item)
+      emit('selectTarget', item)
     };
 
     return {
-      onItemSelect,
+      onTargetSelect,
     };
   },
 });
 </script>
 
+
+
+
+
 <style lang="scss">
-ul {
-  list-style-type: none;
-  margin-block-start: 0;
-  margin-block-end: 0;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  padding-inline-start: 0px;
+#navi {
+    width: 80%;
+    height: 20em;
+    line-height: 2em;
+    border: 1px solid #ccc;
+    padding: 0;
+    margin: 0;
+    overflow: scroll;
+    overflow-x: hidden;
+    margin: 0 auto;
 }
 </style>

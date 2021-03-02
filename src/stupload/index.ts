@@ -12,7 +12,8 @@ import { UploadInterface } from '@/models/upload/Upload.interface'
 let frmd: FormData = new FormData();
 
 const frmdata: UploadInterface = { 
-    formdata: frmd
+    formdata: frmd,
+    files: []
 }
 
 // начальное состояние:
@@ -32,8 +33,8 @@ export default createStore({
         },
 
         uploadedFiles(state: UploadStateInterface, formD: UploadInterface) {
-            //state.files = formD
             state.loading = false
+            //formD
         },
         
     },
@@ -48,7 +49,8 @@ export default createStore({
             commit('uploadingFiles', params)
             
         setTimeout(() => apiClient.upload.fetchItems(state.files.formdata).then((data: UploadInterface) => {
-                commit('uploadedFiles', data)
+                
+                 commit('uploadedFiles', data)
             }), 1000)
         }
 

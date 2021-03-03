@@ -1,4 +1,9 @@
 <template>
+
+<AuthComponent
+  :model="auth"
+ />
+
   <div class="home">
     <ItemsListComponent 
       :items="items"
@@ -26,6 +31,7 @@ import store  from "@/store"
 import stupload from "@/stupload"
 import sttarget from "@/sttarget"
 import stfiles from "@/stfiles"
+import stauth from "@/stauth"
 import ItemsListComponent from "@/components/items/ItemsList.component.vue";
 import TargetListComponent from "@/components/items/TargetList.component.vue";
 import FilesListComponent from "@/components/items/FilesList.component.vue"
@@ -36,6 +42,7 @@ import { TargetInterface } from "@/models/items/Target.interface";
 import FindComponent  from "@/components/items/Find.component.vue"
  import { debounce } from "throttle-debounce"; 
 import { FilesInterface } from "@/models/items/Files.interface";
+import AuthComponent from "@/components/auth/Auth.component.vue"
 
 
 
@@ -46,37 +53,29 @@ export default defineComponent({
     UploadFiles,
     TargetListComponent,
     FindComponent,
-    FilesListComponent
+    FilesListComponent,
+    AuthComponent
   },
   setup() {
-
-
-
 
     //дулаение загруженных файлов 
     const onDeleteFiles = (file: FilesInterface) => {
          // stfiles.state.
     }
 
-
     const onFilterTarget = debounce(500, (txt: string) => {
-    //if (txt) {
 
         sttarget.state.filter = txt
         sttarget.dispatch('loadItems', {
           filter: txt
         });
-     // }  else {
-
-    // }
+ 
     });
-
-
 
 
    const onChooseFiles = (upload: UploadInterface) => {
    
-   console.log("choose", upload)
+
 
       stupload.dispatch('uploadFiles', {
             files: upload
@@ -106,12 +105,20 @@ export default defineComponent({
       return sttarget.state.target;
     });
     
+
+    const auth = computed(() => {
+      console.log("stauth",stauth.state)
+      return stauth.state.auth
+    })
    
     onMounted(() => {
+      stauth.dispatch('auth');
       store.dispatch('loadItems');
       sttarget.dispatch('loadItems');
     });
 
+
+  
     const loading = computed(() => {
       return store.state.loading;
     });
@@ -130,6 +137,7 @@ export default defineComponent({
       onChooseFiles,
       onSelectTarget,
       onFilterTarget,
+      auth,
     };
   },
 });

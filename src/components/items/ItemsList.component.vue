@@ -1,6 +1,6 @@
 <template>
 <div>
-<h3>Items - loading: {{ loading }}:</h3>
+<h3>Пользователи {{ loading }}:</h3>
 
 <Loader v-show="loading" />
     <ul v-show="!loading">

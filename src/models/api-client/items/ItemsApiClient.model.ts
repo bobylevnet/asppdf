@@ -2,7 +2,7 @@
 import { HttpClient, HttpRequestParamsInterface } from '@/models/http-client'
 import { ItemsApiClientUrlsInterface } from './ItemsApiClientUrls.interface'
 import { ItemsApiClientInterface } from './ItemsApiClient.interface'
-import { ItemInterface } from '@/models/items/Item.interface'
+import { ItemInterface } from '@/models/interfaces/Item.interface'
 /**
 * @Name ItemsApiClientModel
 * @description

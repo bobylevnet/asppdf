@@ -1,11 +1,11 @@
 <template>
 <div>
-<h3>Items - loading: {{ loading }}:</h3>
+<h3>Файлы</h3>
     <ul id="navi">
       <FilesComponent
         v-for="file in files"
         :key="file.id"
-        :model="target"
+        :model="file"
         @delete="onDelete"
       />
     </ul>

@@ -1,5 +1,5 @@
 import { createStore } from 'vuex'
-import { ItemInterface } from '@/models/items/Item.interface'
+import { ItemInterface } from '@/models/interfaces/Item.interface'
 import { ItemsStateInterface } from '@/models/store/ItemsState.interface'
 import apiClient from '@/api-client'
 // начальное состояние:

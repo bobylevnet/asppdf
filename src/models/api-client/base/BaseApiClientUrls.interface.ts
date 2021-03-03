@@ -4,5 +4,6 @@
 * Интерфейс для URL
 */
 export interface BaseApiClientUrlsInterface {
-    baseurl: string
+    baseurl: string,
+    authurl: string 
 }

@@ -1,5 +1,5 @@
-import { ItemInterface } from '@/models/items/Item.interface'
-import { TargetInterface } from '../items/Target.interface';
+import { ItemInterface } from '@/models/interfaces/Item.interface'
+import { TargetInterface } from '../interfaces/Target.interface';
 /**
 * @name TargetStateInterface
 * @description

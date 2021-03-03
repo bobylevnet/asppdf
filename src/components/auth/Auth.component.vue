@@ -1,35 +1,31 @@
 <template>
-  <li    :class="cssClass"  >
-    <div class="selected-indicator">￿</div>
-    <div class="name">{{ model.target_name }}</div>
-    <input type="button" value="Удалить"/> 
-  </li>
-</template>
+<h3>Пользователь </h3>
+<h2 v-if="model"> {{ model.Fullnameuser }}</h2>
+
+</template>     
 <script lang="ts">
 import { defineComponent, computed, PropType } from "vue";
-import { FilesInterface } from "@/models/items/Files.interface";
+import { AuthInterface } from "@/models/items/Auth.interface";
+
 export default defineComponent({
   props: {
     model: {
-      type: Object as PropType<FilesInterface>,
+      type: Object as PropType<AuthInterface>,
     },
   },
-  emits: ["delete"],
 
-  setup(props, { emit }) {
-
-    const onClick = () => {
-    console.log("delete", props.model);
-
-     emit("delete", props.model);
-    };
+  //emits: ["auth"],
+  setup(props) {
+  
     return {
-       onClick,
+      
     };
   },
 
 });
 </script>
+
+
 
 <style lang="scss">
 li.item {

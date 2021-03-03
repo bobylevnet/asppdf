@@ -1,6 +1,6 @@
 <template>
 <div>
-<h3>Items - loading: {{ loading }}:</h3>
+<h3>Цели обработки{{ loading }}:</h3>
     <ul id="navi">
       <TargetComponent
         v-for="target in targets"

@@ -1,7 +1,7 @@
 <template>
 <div>
 <h3>Файлы</h3>
-    <ul id="navi">
+    <ul id="navif">
       <FilesComponent
         v-for="file in files"
         :key="file.id"
@@ -13,7 +13,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
-import { FilesInterface } from "@/models/items/Files.interface";
+import { FilesInterface } from "@/models/interfaces/Files.interface";
 import FilesComponent from "./children/Files.component.vue";
 import Loader from '@/components/shared/Loader.component.vue'
 
@@ -46,7 +46,7 @@ emits: ['delete'],
 
 
 <style lang="scss">
-#navi {
+#navif {
     width: 80%;
     height: 20em;
     line-height: 2em;

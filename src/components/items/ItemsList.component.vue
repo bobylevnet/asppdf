@@ -15,7 +15,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
-import { ItemInterface } from "@/models/items/Item.interface";
+import { ItemInterface } from "@/models/interfaces/Item.interface";
 import ItemComponent from "./children/Item.component.vue";
 import Loader from '@/components/shared/Loader.component.vue'
 

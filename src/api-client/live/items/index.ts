@@ -4,8 +4,7 @@ import {
     ItemsApiClientModel
 } from '@/models/api-client/items'
 const urls: ItemsApiClientUrlsInterface = {
-    fetchItems: process.env.VUE_APP_SITE_URL +`/route?rest={"model": "items", "action": "findall"}
-    &datajs={"id" : "", "namec":"","selected":""}`
+    fetchItems: process.env.VUE_APP_SITE_URL 
 }
 // Создаём экземпляр ItemsApiClient с url, который возвращает данные
 const itemsApiClient: ItemsApiClientInterface = new ItemsApiClientModel(urls)

@@ -1,11 +1,12 @@
 <template>
 <h3>Пользователь </h3>
 <h2 v-if="model"> {{ model.Fullnameuser }}</h2>
+<h2>{{model.Target }}</h2>
 
 </template>     
 <script lang="ts">
 import { defineComponent, computed, PropType } from "vue";
-import { AuthInterface } from "@/models/items/Auth.interface";
+import { AuthInterface } from "@/models/interfaces/Auth.interface";
 
 export default defineComponent({
   props: {

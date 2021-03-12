@@ -9,4 +9,7 @@ export interface TargetStateInterface {
     loading: boolean
     target: TargetInterface[]
     filter: string
+    selectedparent: number
+    targetfind: TargetInterface[]
+  
 }

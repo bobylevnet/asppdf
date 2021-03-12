@@ -20,7 +20,7 @@ export class HttpClientModel implements HttpClientInterface {
             process.env && process.env.VUE_APP_TOKEN_KEY
                 ? process.env.VUE_APP_TOKEN_KEY
                 : 'myapp-token'
-        const token = localStorage.getItem(TOKEN_KEY) || ''
+        const token = localStorage.getItem("ACCESS_TOKEN") || ''
         return token
     }
     constructor() {

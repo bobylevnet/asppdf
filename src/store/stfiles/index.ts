@@ -2,6 +2,7 @@ import { createStore } from 'vuex'
 import { FilesInterface } from '@/models/interfaces/Files.interface'
 import { FilesStateInterface } from '@/models/store/FilesState.interface'
 import apiClient from '@/api-client'
+import stauth from '../stauth'
 
 
 // начальное состояние:
@@ -33,20 +34,21 @@ export default createStore({
 
     actions: {
 
-        loadedFiles({ commit, state }) {
+        loadFiles({ commit, state }) {
+            let iduser = stauth.state.auth.IDuser
 
-          /*  setTimeout(() => apiClient.base.reqeust(model, "find", `"target_name":"${state.id}"`).then((data: FilesInterface[]) => {
-                commit('loadedItems', data)
-            }), 1000)*/
+            apiClient.base.reqeust(`/files/select/${iduser}`).then((data: FilesInterface[]) => {
+                commit('loadedFiles', data)
+            })
         },
 
         deletingFile({ commit }, params: {
             id: number
         }) {
             const { id } = params 
-            setTimeout(() => apiClient.base.reqeust(model, "find", `"target_name":"${id}"`).then((data: FilesInterface[]) => {
+          apiClient.base.reqeust("/files/upload").then((data: FilesInterface[]) => {
                 commit('deletedFiles', data)
-            }), 1000) 
+            })
            // commit('deleteFiles', params)
         }
 

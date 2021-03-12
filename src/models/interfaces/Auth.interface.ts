@@ -3,4 +3,6 @@ export interface AuthInterface {
     Nameuser: string
     Fullnameuser: string 
     Accesstoken: string 
+    //цели пользователя 
+    Target: []
 }

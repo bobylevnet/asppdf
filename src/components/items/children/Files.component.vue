@@ -1,13 +1,21 @@
 <template>
+
+<!--     ID: number,
+    DateCreate: string,
+    DateDelete: string
+    PathFile: string,
+    IDUser: number,
+    Idtarger: number,
+} -->
   <li    :class="cssClass"  >
     <div class="selected-indicator">￿</div>
-    <div class="name">{{ model.target_name }}</div>
+    <div class="name">{{ model.NameFile }}</div>
     <input type="button" value="Удалить"/> 
   </li>
 </template>
 <script lang="ts">
 import { defineComponent, computed, PropType } from "vue";
-import { FilesInterface } from "@/models/items/Files.interface";
+import { FilesInterface } from "@/models/interfaces/Files.interface";
 export default defineComponent({
   props: {
     model: {

@@ -32,9 +32,9 @@ export class BaseApiClientModel implements BaseApiClientInterface {
     }
 
 
-    reqeust(model: string, action: string, datajs: string): Promise<any[]> {
+    reqeust(url: string): Promise<any[]> {
         let urlr = ""
-            urlr = this.urls.baseurl + `{"model":"${model}", "action":"${action}"}&datajs={${datajs}}`
+            urlr = this.urls.baseurl + url
             const getParameters: HttpRequestParamsInterface = {
                 url: urlr,
                 requiresToken: false    

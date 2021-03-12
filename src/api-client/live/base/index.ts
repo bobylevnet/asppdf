@@ -6,7 +6,7 @@ import {
 
 
 const urls: BaseApiClientUrlsInterface = {
-    baseurl: process.env.VUE_APP_SITE_URL + `/route?rest=`,
+    baseurl: process.env.VUE_APP_SITE_URL,
     authurl: process.env.VUE_APP_SITE_URL + `/auth`
 }
 // Создаём экземпляр ItemsApiClient с url, который возвращает данные

@@ -9,7 +9,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, computed, PropType } from "vue";
-import { ItemInterface } from "@/models/items/Item.interface";
+import { ItemInterface } from "@/models/interfaces/Item.interface";
 export default defineComponent({
   props: {
     model: {
@@ -22,7 +22,8 @@ export default defineComponent({
     const cssClass = computed(() => {
       let css = "item";
       if (props.model?.selected) {
-        css += " selected";
+        console.log("selected")
+        css += " select";
       }
       return css.trim();
     });
@@ -68,4 +69,5 @@ li.item {
     background-color: #eee;
   }
 }
+
 </style>

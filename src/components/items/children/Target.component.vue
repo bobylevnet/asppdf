@@ -1,39 +1,46 @@
 <template>
-  <li
-    :class="cssClass"
+  <div
+ 
+    :class= cssClass
     @click="onClick"
+
   >
     <div class="selected-indicator">￿</div>
-    <div class="name">{{ model.target_name }}</div>
-  </li>
+    <div class="name">{{ model.UserTargetID }} {{ model.TargetName }}</div>
+  </div>
 </template>
+
 <script lang="ts">
-import { defineComponent, computed, PropType } from "vue";
-import { TargetInterface } from "@/models/items/Target.interface";
+import { defineComponent, computed, PropType, ref } from "vue";
+import { TargetInterface } from "@/models/interfaces/Target.interface";
 export default defineComponent({
+
   props: {
     model: {
+
       type: Object as PropType<TargetInterface>,
     },
   },
-  emits: ["select"],
+  emits: ["select-item"],
 
   setup(props, { emit }) {
+
     const cssClass = computed(() => {
       let css = "item";
       if (props.model?.selected) {
-        css += " selected";
+       alert()
+      //  css += " selected";
       }
       return css.trim();
     });
-    const onClick = () => {
-    console.log("select", props.model);
     
-     emit("select", props.model);
+    const onClick = () => {
+     emit("select-item", props.model);
     };
+
     return {
       cssClass,
-       onClick,
+      onClick
     };
   },
 
@@ -41,7 +48,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-li.item {
+div.item {
   padding: 0;
   outline: solid 1px #eee;
   display: grid;
@@ -67,5 +74,19 @@ li.item {
   &:hover {
     background-color: #eee;
   }
+  li {
+
+   color: blue;
+
+  }
+
+  li:active {
+
+    color: red;
+
+  }
+
+
+
 }
 </style>

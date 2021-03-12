@@ -2,5 +2,7 @@ import { ItemInterface } from "./Item.interface";
 
 
 export interface TargetInterface extends ItemInterface {
-    target_name: string
+    UserTargetID: number
+    TargetName: string
+    selected: boolean
 }

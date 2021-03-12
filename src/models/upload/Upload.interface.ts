@@ -1,4 +1,4 @@
 export interface UploadInterface {
     formdata: FormData,
-    files: []
+    files: File[]
 }

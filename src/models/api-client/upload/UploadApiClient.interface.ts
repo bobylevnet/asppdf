@@ -1,4 +1,3 @@
-import { ItemInterface } from '@/models/interfaces/Item.interface'
 import { UploadInterface } from '@/models/upload/Upload.interface';
 /**
 * @Name ItemsApiClientInterface

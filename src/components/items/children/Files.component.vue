@@ -8,9 +8,12 @@
     Idtarger: number,
 } -->
   <li    :class="cssClass"  >
-    <div class="selected-indicator">￿</div>
-    <div class="name">{{ model.NameFile }}</div>
-    <input type="button" value="Удалить"/> 
+    <div class="selected-indicator"></div>
+    <div class="name"> <span> Файл - </span>{{ model.name }} 
+    <span>Размер </span>  {{ Math.round(model.size/1024) }} 
+    <span>кБ </span> 
+    <input type="button" @click="onClick" value="Удалить"/> 
+    </div>
   </li>
 </template>
 <script lang="ts">
@@ -19,7 +22,7 @@ import { FilesInterface } from "@/models/interfaces/Files.interface";
 export default defineComponent({
   props: {
     model: {
-      type: Object as PropType<FilesInterface>,
+      type: Object as PropType<File>,
     },
   },
   emits: ["delete"],
@@ -27,9 +30,9 @@ export default defineComponent({
   setup(props, { emit }) {
 
     const onClick = () => {
-    console.log("delete", props.model);
-
+     console.log("deleteing one"  , props.model)
      emit("delete", props.model);
+
     };
     return {
        onClick,

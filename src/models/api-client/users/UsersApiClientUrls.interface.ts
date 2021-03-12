@@ -3,6 +3,6 @@
 * @description
 * Интерфейс для URL-адресов элементов вместо использования жёстко заданных строк.
 */
-export interface ItemsApiClientUrlsInterface {
+export interface UsersApiClientUrlsInterface {
     fetchItems: string
 }

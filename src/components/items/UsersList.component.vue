@@ -15,8 +15,8 @@
 </template>
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
-import { ItemInterface } from "@/models/interfaces/Item.interface";
-import ItemComponent from "./children/Item.component.vue";
+import { UsersInterface } from "@/models/interfaces/Users.interface";
+import ItemComponent from "./children/Users.component.vue";
 import Loader from '@/components/shared/Loader.component.vue'
 
 export default defineComponent({
@@ -26,23 +26,23 @@ export default defineComponent({
   },
   props: {
     items: {
-      type: Array as PropType<ItemInterface[]>,
+      type: Array as PropType<UsersInterface[]>,
     },
     loading: {
         type: Boolean
     }
   },
-emits: ['selectItem'],
+emits: ['selectUser'],
   setup(props, {emit}) {
 
-    const onItemSelect = (item: ItemInterface) => {
-     // item.selected = !item.selected;
+    const onUserSelect = (user: UsersInterface) => {
+      user.selected = !user.selected;
      // console.log("onItemSelect", item.id, item.selected);
-      emit('selectItem', item)
+      emit('selectUser', user)
     };
 
     return {
-      onItemSelect,
+      onUserSelect,
     };
   },
 });

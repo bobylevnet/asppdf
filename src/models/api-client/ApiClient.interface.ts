@@ -1,6 +1,7 @@
-import { ItemsApiClientInterface } from './items'
+import { UsersApiClientInterface } from './users'
 import { UploadApiClientInterface } from './upload';
 import { BaseApiClientInterface } from './base'
+
 
 /**
 * @Name ApiClientInterface
@@ -9,8 +10,8 @@ import { BaseApiClientInterface } from './base'
 ганизации кода.
 */
 export interface ApiClientInterface {
-    items: ItemsApiClientInterface,
+    users: UsersApiClientInterface,
     upload: UploadApiClientInterface,
-    target: ItemsApiClientInterface,
+    target: BaseApiClientInterface,
     base: BaseApiClientInterface
 }

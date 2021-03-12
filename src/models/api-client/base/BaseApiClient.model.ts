@@ -2,7 +2,6 @@
 import { HttpClient, HttpRequestParamsInterface } from '@/models/http-client'
 import { BaseApiClientUrlsInterface } from './BaseApiClientUrls.interface'
 import { BaseApiClientInterface } from './BaseApiClient.interface'
-import { ItemInterface } from '@/models/interfaces/Item.interface'
 import { AuthInterface } from '@/models/interfaces/Auth.interface'
 
 /**

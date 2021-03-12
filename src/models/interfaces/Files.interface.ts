@@ -1,4 +1,3 @@
-import { ItemInterface } from "./Item.interface";
 
 {
   /*   "ID": 22, "NameFile": "12.txt",
@@ -9,7 +8,7 @@ import { ItemInterface } from "./Item.interface";
             "IdTarget": 0,
             "Uploaded": false */
 }
-export interface FilesInterface extends ItemInterface {
+export interface FilesInterface  {
     ID: number,
     NameFile: string,
     DateCreate: string,

@@ -2,12 +2,14 @@
 <div>
 <h3>Файлы</h3>
     <ul id="navif">
+
+
       <FilesComponent
         v-for="file in files"
         :key="file.id"
         :model="file"
         @delete="onDelete"
-      />
+      /> 
     </ul>
   </div>
 </template>
@@ -23,15 +25,16 @@ export default defineComponent({
   },
   props: {
     files: {
-      type: Array as PropType<FilesInterface[]>,
+      type: Array as PropType<File[]>,
     },
   },
-emits: ['delete'],
+  emits: ["delete"],
 
   setup(props, {emit}) {
 
-    const onDelete = (files: FilesInterface) => {
-      emit('delete', files)
+    const onDelete = () => {
+
+         emit("delete",props.files )
     };
 
     return {

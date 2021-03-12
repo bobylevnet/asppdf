@@ -4,16 +4,16 @@
     @click="onClick"
   >
     <div class="selected-indicator">￿</div>
-    <div class="name">{{ model.namec }}</div>
+    <div class="name">{{ model.FullNameUser }}</div>
   </li>
 </template>
 <script lang="ts">
 import { defineComponent, computed, PropType } from "vue";
-import { ItemInterface } from "@/models/interfaces/Item.interface";
+import { UsersInterface } from "@/models/interfaces/Users.interface";
 export default defineComponent({
   props: {
     model: {
-      type: Object as PropType<ItemInterface>,
+      type: Object as PropType<UsersInterface>,
     },
   },
   emits: ["select"],
@@ -23,7 +23,7 @@ export default defineComponent({
       let css = "item";
       if (props.model?.selected) {
         console.log("selected")
-        css += " select";
+        css += " selected";
       }
       return css.trim();
     });

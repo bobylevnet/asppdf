@@ -36,10 +36,10 @@ export default createStore({
 
         loadFiles({ commit, state }) {
             let iduser = stauth.state.auth.IDuser
-
-            apiClient.base.reqeust(`/files/select/${iduser}`).then((data: FilesInterface[]) => {
-                commit('loadedFiles', data)
-            })
+            //apiClient.base.reqeust(`/files/select/${iduser}`).then((data: FilesInterface[]) => {
+            //    commit('loadedFiles', data)
+           // })
+           
         },
 
         deletingFile({ commit }, params: {

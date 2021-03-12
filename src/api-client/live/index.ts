@@ -2,16 +2,16 @@
 
 import { ApiClientInterface } from '@/models/api-client/ApiClient.interface'
 
-import itemsApiClient from './items'
+import usersApiClient from './users'
 import uploadApiClient from './upload'
 import targertApiClient from './target'
 import baseApiClient from './base'
 
 // Создаём экземпляр основного ApiClient, который будет обёрткой для фиктивных клиентов.
 const apiLiveClient: ApiClientInterface = {
-    items: itemsApiClient,
+    users: usersApiClient,
     upload: uploadApiClient,
-    target: targertApiClient,
+    target: baseApiClient,
     base: baseApiClient
 }
 // Экспортируем экземпляр.

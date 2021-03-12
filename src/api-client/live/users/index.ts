@@ -3,11 +3,16 @@ import {
     UsersApiClientInterface,
     UsersApiClientModel
 } from '@/models/api-client/users'
+
+import sttarget from "@/store/sttarget"
+
+
+let idtarget = sttarget.state.selectedparent
+
 const urls: UsersApiClientUrlsInterface = {
-    fetchItems: process.env.VUE_APP_SITE_URL + `/route?rest={"model": "target", "action": "findall"}
-    &datajs={}`
+    fetchItems: process.env.VUE_APP_SITE_URL + `/users/targets/${idtarget}`  
 }
 // Создаём экземпляр ItemsApiClient с url, который возвращает данные
-const targertApiClient: UsersApiClientInterface = new UsersApiClientModel(urls)
+const usersApiClient: UsersApiClientInterface = new UsersApiClientModel(urls)
 // Экспортируем объект.
-export default targertApiClient
+export default usersApiClient

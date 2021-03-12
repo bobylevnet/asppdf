@@ -3,7 +3,7 @@ import { TargetInterface } from '@/models/interfaces/Target.interface'
 import { TargetStateInterface } from '@/models/store/TargetState.interface'
 import apiClient from '@/api-client'
 import stauth from '@/store/stauth'
-import { FilteredInterface } from '@/models/interfaces/Filtered.interface'
+
 
 
 // начальное состояние:
@@ -25,6 +25,7 @@ export default createStore({
             state.loading = true
             state.target = []
         },
+
         loadedTargets(state: TargetStateInterface, target: TargetInterface[]) {
             state.target = target
             state.loading = false
@@ -60,35 +61,35 @@ export default createStore({
 
     actions: {
 
-        loadTargets({ commit, state }) {
+            loadTargets({ commit, state }) {
 
-            commit('loadingTargets')
+                commit('loadingTargets')
 
-            let id_user = stauth.state.auth.IDuser
-            let url: string 
+                let id_user = stauth.state.auth.IDuser
+                let url: string 
 
-         
-           url = `/target/select/${id_user}`
-           apiClient.base.reqeust(url).then((data: TargetInterface[]) => {
-                commit('loadedTargets', data)
-            })
-        },
+            
+            url = `/target/select/${id_user}`
+            apiClient.target.reqeust(url).then((data: TargetInterface[]) => {
+                    commit('loadedTargets', data)
+                })
+            },
 
-        //фильтруем цели
-        filterTargets({ commit }, params: {
-            filter: string
-         }) { 
+            //фильтруем цели
+            filterTargets({ commit }, params: {
+                filter: string
+            }) { 
 
-            commit('filteringTargets', params)
-        },
+                commit('filteringTargets', params)
+            },
 
-        //выбор целей
-        selectTarget({ commit }, params: {
-            id: number
-            selected: boolean
-        }) {
-            commit('selectTarget', params)
-        }
+            //выбор целей
+            selectTarget({ commit }, params: {
+                id: number
+                selected: boolean
+            }) {
+                commit('selectTarget', params)
+            }
 
 
     },

@@ -7,7 +7,7 @@
   <div>
     <div v-show="!loading">
             <div class="">
-                <input type="file" @change="uploadFile" multiple>
+                <input type="file" name="Выберите файла для отправки"  @change="uploadFile" multiple>
             </div>
     </div>    
   </div>
@@ -43,16 +43,12 @@ export default defineComponent({
 
      const   uploadFile = (event: any)=>  {
     
+        //заполняем FromData файлами
         let fls = Object.keys(event.target.files)
-       
         for (const i of fls) {
-           console.log('file', i)
-
          upload.formdata.append('files', event.target.files[i])
-            // console.log('prosp', props.model)
-          }
-         console.log('prospfrmdata', upload)
-         emit('chooseFile',upload )
+        }
+         emit('chooseFile', upload )
       };
 
     return {

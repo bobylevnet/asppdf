@@ -2,7 +2,6 @@
 import { HttpClient, HttpRequestParamsInterface } from '@/models/http-client'
 import { UploadApiClientUrlsInterface } from './UploadApiClientUrls.interface'
 import { UploadApiClientInterface } from './UploadApiClient.interface'
-import { ItemInterface } from '@/models/interfaces/Item.interface'
 import { UploadInterface } from '@/models/upload/Upload.interface'
 /**
 * @Name UPLOADApiClientModel
